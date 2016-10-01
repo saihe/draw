@@ -19,10 +19,14 @@ $(function(){
     }
 
     $('canvas').on('touchstart', function(event){
+        console.log(event);
+        event.preventDefault();
         start = getCanvasPoint(event.originalEvent.touches[0]);
     });
 
     $('canvs').on('touchmove', function(event){
+        console.log(event);
+        event.preventDefault();
         console.log("touchmove");
         var end = getCanvasPoint(event.originalEvent.touches[0]);
         
