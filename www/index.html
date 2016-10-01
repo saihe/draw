@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
+    <script src="js/js.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
-    <script>
-    </script>
 </head>
 <body>
 	<canvas id="canvas" width="320" height="480"></canvas>
+    <div class="painter-menu">
+        <div class="painter-menu-item painter-menu-item-red active" data-color="red"></div>
+        <div class="painter-menu-item painter-menu-item-blue" data-color="blue"></div>
+        <div class="painter-menu-item painter-menu-item-green" data-color="green"></div>
+        <div class="painter-menu-item painter-menu-item-delete"></div>
+    </div>
 </body>
 </html>

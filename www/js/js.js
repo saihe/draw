@@ -1,41 +1,71 @@
-console.log("hoge");
 $(function(){
     var canvas = $('#canvas')[0];
     var context = canvas.getContext('2d');
-    var startX, startY;
+    var start = {}, color = 'red';
     
-    $('canvas').on('touchstart', function(event){
-        console.log("touchstart");
-        event.preventDefault();
-        var pageX = event.originalEvent.touches[0].pageX;
-        var pageY = event.originalEvent.touches[0].pageY;
+    init();
+    
+    function init(){
+        //画面にサイズを合わせる
+        var rect = document.body.getBoundingClientRect();
+        canvas.width = rect.witch;
+        canvas.height = rect.height;
         
-        var point = getCanvasPoint(pageX, pageY);
-        startX = point.x;
-        startY = point.y;
+        //線のスタイルを設定する
+        context.lineWidth = 7;
+        context.lineJoin = 'round';
+        context.lineCap = 'round';
+        context.strokeStyle = color;     
+    }
+
+    $('canvas').on('touchstart', function(event){
+        start = getCanvasPoint(event.originalEvent.touches[0]);
     });
-    
+
     $('canvs').on('touchmove', function(event){
         console.log("touchmove");
-        event.preventDefault();
-        var pageX = event.originalEvent.touches[0].pageX;
-        var pageY = event.originalEvent.touches[0].pageY;
-        var point = getCanvasPoint(pageX, pageY);
-        var endX = point.X;
-        var endY = point.Y;
+        var end = getCanvasPoint(event.originalEvent.touches[0]);
+        
+        //colorを指定して描画する
+        context.strokeStyle = color;
         context.beginPath();
-        context.moveTo(startX, startY);
-        context.lineTo(endX, endY);
+        context.moveTo(start.x, start.y);
+        context.lineTo(end.x, end.y);
         context.stroke();
-        startX = endX;
-        startY = endY;
+        start = end;
+        event.preventDefault();
+    });   
+    
+    
+    $('.painter-menu-item').on('touchstart', function(){
+       if($(this).hasClass('painter-menu-item-delete')){
+           clearCanvas();
+       } else{
+           $('.painter-menu-item').removeClass('active');
+           $(this).addClass('active');
+           color = $(this).attr('data-color');
+       }
     });
     
-    function getCannvasPoint(pageX, pageY){
+    //画面のx,y座標からcanvasのx,y座標に変換する
+    function getCanvasPoint(screenXY){
         var base = canvas.getBoundingClientRect();
         return {
-            x: pageX - base.left,
-            y: pageY - base.top
+            x: screenXY.pageX - base.left,
+            y: screenXY.pageY - base.top
         };
     }
+    
+    //キャンバスを消す
+    function clearCanvas(){
+        setTimeout(function(){
+           if(confirm('描いた絵を消しますか？')){
+               context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+           } 
+        }, 100);
+    }
+    
+    $(window).on('orientationchange', function(){
+       setTimeout(init, 100); 
+    });
 });

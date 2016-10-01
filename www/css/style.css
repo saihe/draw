@@ -1,2 +1,87 @@
 /**/
 
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background: white url(../img/title.png) 22px 37px no-repeat;
+    background-size: 105px 11px;
+    padding: 0;
+    margin: 0;
+}
+
+.painter-menu {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.painter-menu-item {
+    width: 25%;
+    height: 44px;
+    float: left;
+    border-bottom: 8px solid;
+    background: #fcc no-repeat center;
+    text-align: center;
+    padding: 10px 0 0 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: boder-box;
+}
+
+.painter-menu-item-red {
+    background: #f5bdb9 url(../img/btn_red_normal.png) no-repeat center;
+    background-size: 23px 12px;
+    border-color: #e65a50;
+}
+
+.painter-menu-item-red.active{
+    background-color: #e65a50;
+    background-image: url(../img/btn_red_acrive.png);
+}
+
+.painter-menu-item-blue {
+    background: #bed0eb url(../img/btn_blue_normal.png) no-repeat center;
+    background-size: 28px 12px;
+    border-color: #5c89cc;
+}
+
+.painter-menu-item-blue.active{
+    background-color: #5c89cc;
+    background-image: url(../img/btn_blue_acrive.png);
+}
+
+.painter-menu-item-green {
+    background: #bdd7c0 url(../img/btn_green_normal.png) no-repeat center;
+    background-size: 39px 12px;
+    border-color: #5a9c62;
+}
+
+.painter-menu-item-green.active{
+    background-color: #5a9c62;
+    background-image: url(../img/btn_green_acrive.png);
+}
+
+.painter-menu-item-delete {
+    background: #ccc url(../img/btn_delete_normal.png) no-repeat center;
+    background-size: 15px 16px;
+    border-color: #808080;
+}
+
+.painter-menu-item-delete.active{
+    background-color: #808080;
+    background-image: url(../img/btn_delete_acrive.png);
+}
+
+
+
+
