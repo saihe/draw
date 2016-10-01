@@ -1,9 +1,11 @@
+console.log("hoge");
 $(function(){
     var canvas = $('#canvas')[0];
     var context = canvas.getContext('2d');
     var startX, startY;
     
     $('canvas').on('touchstart', function(event){
+        console.log("touchstart");
         event.preventDefault();
         var pageX = event.originalEvent.touches[0].pageX;
         var pageY = event.originalEvent.touches[0].pageY;
@@ -14,6 +16,7 @@ $(function(){
     });
     
     $('canvs').on('touchmove', function(event){
+        console.log("touchmove");
         event.preventDefault();
         var pageX = event.originalEvent.touches[0].pageX;
         var pageY = event.originalEvent.touches[0].pageY;
